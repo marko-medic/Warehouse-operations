@@ -1,0 +1,11 @@
+.th-link {
+  color: blue;
+  cursor: pointer;
+}
+
+.inline {
+  display: inline;
+  padding: 3px;
+  margin: 10px;
+
+}

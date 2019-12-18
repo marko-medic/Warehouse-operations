@@ -1,0 +1,41 @@
+<form (ngSubmit)="onSubmit()" #addArticleForm="ngForm" novalidate>
+  <div class="form-group form-check">
+    <label class="form-check-label" for="exampleCheck1">Article</label>
+    <select name="article" [(ngModel)]="formData.article" #article="ngModel">
+      <option [ngValue]="article.code" *ngFor="let article of articleList">{{
+        article.name
+      }}</option>
+    </select>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputEmail1"
+        required
+        name="price"
+        [(ngModel)]="formData.price"
+        #price="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputPassword1"
+        required
+        name="quantity"
+        [(ngModel)]="formData.quantity"
+        #quantity="ngModel"
+      />
+    </div>
+  </div>
+  <button
+    type="submit"
+    [disabled]="addArticleForm.form.invalid"
+    class="btn btn-primary"
+  >
+    Save
+  </button>
+</form>

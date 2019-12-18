@@ -1,0 +1,17 @@
+<div class="doc-info">
+  <div>
+    <p>Transaction type: {{ doc?.transactionType }}</p>
+    <p>Date of creation: {{ doc?.dateOfCreation | date }}</p>
+  </div>
+  <div>
+    <p style="text-decoration: underline;">Business partner:</p>
+    <p>{{ doc?.businessPartner.name }}</p>
+    <p>{{ doc?.businessPartner.city }}, {{ doc?.businessPartner.address }}</p>
+  </div>
+  <div>
+    <p>Status: {{ doc?.status }}</p>
+    <button (click)="recordHandler()" class="btn btn-primary">
+      Record document
+    </button>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="pagination">
+  <ngb-pagination
+    [(page)]="pageOptions.current"
+    [pageSize]="pageOptions.size"
+    [collectionSize]="pageOptions?.count"
+    (pageChange)="changePageHandler($event)"
+  ></ngb-pagination>
+  <div class="col">
+    <div class="form-check ">
+      <ng-container *ngFor="let th of tableHeadsArray">
+        <div class="inline" *ngIf="showTableSettings">
+          <input
+            class="form-check-input"
+            id="id"
+            type="checkbox"
+            [(ngModel)]="th.checked"
+          />
+          <label class="form-check-label" for="id">{{ th.text }}</label>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <button
+    class="btn btn-primary"
+    [ngClass]="{ 'btn-secondary': showTableSettings }"
+    (click)="showTableSettings = !showTableSettings"
+  >
+    {{ !showTableSettings ? "Open table settings" : "Hide table settings" }}
+  </button>
+</div>
+
+<div class="content">
+  <table class="table">
+    <thead>
+      <tr>
+        <ng-container *ngFor="let th of tableHeadsArray">
+          <th
+            [ngClass]="{ 'th-link': th.href }"
+            *ngIf="th.checked"
+            (click)="sortHandler(th.href)"
+            scope="col"
+          >
+            {{ th.text }}
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let order of orderList?.results"
+        [routerLink]="['/document', order._id]"
+      >
+        <ng-container *ngFor="let th of tableHeadsArray">
+          <td *ngIf="th.checked">
+            {{ getFormatedText(th, order) }}
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>

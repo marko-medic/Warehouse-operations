@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Article</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of docList?.results">
+      <td>{{ item.article }}</td>
+      <td>{{ item.price | number: "1.2" }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.quantity * item.price | number: "1.2" }}</td>
+    </tr>
+  </tbody>
+</table>

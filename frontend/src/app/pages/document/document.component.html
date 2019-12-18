@@ -1,0 +1,17 @@
+<app-doc-info
+  *ngIf="document?.status !== 'recorded'"
+  [docId]="docId"
+  [doc]="document"
+></app-doc-info>
+<div class="row">
+  <div class="col-8" [ngClass]="{ 'col-12': document?.status === 'recorded' }">
+    <button (click)="removeHandler()" class="btn btn-danger m-2">
+      Delete document
+    </button>
+    <app-table [docId]="docId" [docList]="docList"></app-table>
+  </div>
+  <div *ngIf="document?.status !== 'recorded'" class="col-4">
+    <h3>Add new item</h3>
+    <app-form [docId]="docId"></app-form>
+  </div>
+</div>
